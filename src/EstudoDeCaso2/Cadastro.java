@@ -49,7 +49,7 @@ public class Cadastro {
 	
 	public boolean verificaTelefone(String telefone) {
 		
-		if(telefone.length()==11)
+		if(telefone.length()==11 && telefone.matches(".*[0-9].*"))
 			return true;
 			this.telefone.add(telefone);
 		return false;
