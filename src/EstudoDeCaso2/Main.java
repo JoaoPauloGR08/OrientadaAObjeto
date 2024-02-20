@@ -18,7 +18,7 @@ public class Main {
 			acao = sc.nextInt();
 
 			if (acao == 1)
-				cadastroP();
+				cadastroPA();
 			else if (acao == 2)
 				cadastroC();
 			else if (acao == 3)
@@ -34,7 +34,7 @@ public class Main {
 
 	}
 
-	public static void cadastroP() {
+	public static void cadastroPA() {
 
 		System.out.print("Insira o primeiro nome: ");
 		String nome = sc.next();
