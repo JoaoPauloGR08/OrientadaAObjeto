@@ -7,21 +7,25 @@ public class Main {
 	static Cadastro c = new Cadastro();
 	static CadastroCM cCM = new CadastroCM();
 	static Scanner sc = new Scanner(System.in);
-	static int acao = 4, aux = 1;
+	static int acao = Integer.MAX_VALUE, aux = 1;
 
 	public static void main(String[] args) {
 
-		while (acao != 3 && acao != 1 && acao != 2) {
+		while (acao != 0) {
 
 			System.out.println(
-					"Insira a ação que deseja realizar: \n1   Cadastro de Aluno/Professor\n2   Cadastro de Curso\n3   Sair");
+					"Insira a ação que deseja realizar: \n1   Cadastro de Aluno/Professor\n2   Cadastro de Curso\n3   Cadastro de Matéria\n4   Verificar cursos cadastrados\n0   Sair");
 			acao = sc.nextInt();
 
 			if (acao == 1)
-				cadastroAP();
+				cadastroP();
 			else if (acao == 2)
-				cadastroCM();
+				cadastroC();
 			else if (acao == 3)
+				cadastroM();
+			else if (acao == 4)
+				cCM.mostrarC();
+			else if (acao == 0)
 				System.out.println("Menu fechado com sucesso!");
 			else
 				System.out.println("Ação inválida detectada, tente novamente.");
@@ -30,7 +34,7 @@ public class Main {
 
 	}
 
-	public static void cadastroAP() {
+	public static void cadastroP() {
 
 		System.out.print("Insira o primeiro nome: ");
 		String nome = sc.next();
@@ -56,24 +60,26 @@ public class Main {
 			System.out.print("Insira novamente o número de telefone: ");
 		}
 
-		acao = 4;
+		acao = Integer.MAX_VALUE;
 
 	}
 
-	public static void cadastroCM() {
+	public static void cadastroC() {
 
-		System.out.print("Insira o nome do curso: ");
-		cCM.nome.add(sc.next());
+		cCM.CadastroCurso();
 
-		System.out.print("Insira a carga horária do curso: ");
-		cCM.cargaHoraria.add(sc.nextInt());
-
-		System.out.print("Insira o valor do curso: ");
-		cCM.valor.add(sc.nextFloat());
-
-		acao = 4;
+		acao = Integer.MAX_VALUE;
 		aux++;
 
+	}
+	
+	public static void cadastroM() {
+		
+		cCM.CadastroMateria();
+		
+		acao = Integer.MAX_VALUE;
+		aux++;
+		
 	}
 
 }
