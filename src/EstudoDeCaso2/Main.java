@@ -59,7 +59,9 @@ public class Main {
 		while (!c.verificaTelefone(sc.next())) {
 			System.out.print("Insira novamente o número de telefone: ");
 		}
-
+		
+		System.out.println("CADASTRO REALIZADO COM SUCESSO!!!!!!!!!");
+		
 		acao = Integer.MAX_VALUE;
 
 	}
