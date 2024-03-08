@@ -13,6 +13,11 @@ public class Pedido {
 	
 	private ArrayList<Produto> produtos = new ArrayList<Produto>();
 	
+	public void newProduto() {
+		@SuppressWarnings("unused")
+		ArrayList<Produto> produtos = new ArrayList<Produto>();
+	}
+	
 	public void addProduto(Produto produto) { // adicionar produto no carrinho
 		this.produtos.add(produto);
 	}

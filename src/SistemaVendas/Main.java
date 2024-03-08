@@ -55,6 +55,8 @@ public class Main {
 			prod1.setNome(sc.next());
 				
 			ped1.addProduto(prod1);
+			
+			ped1.newProduto();
 		}
 		
 		/*Pessoa joao = new Pessoa(); // associa uma pessoa com um endereço
