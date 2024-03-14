@@ -2,9 +2,9 @@ package EstudoDeCaso3;
 
 public class Cliente {
 
-    private ArrayList <Integer> idCliente = new ArrayList<>();
+    private int idCliente;
     private String telefone;
-    private String endereco;
+    private Endereco endereco;
     
 
     public void setId (int idCliente) {
@@ -21,9 +21,9 @@ public class Cliente {
 
         if(telefone.length() == 11 && telefone.matches(".*[0-9].*")){
             this.telefone = telefone;
-            return True;
+            return true;
         }
-        return False;
+        return false;
     }
 
     public String getTelefone (){
