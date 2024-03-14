@@ -1,12 +1,14 @@
 package EstudoDeCaso3;
 
+import java.util.Date;
+
 public class Entrega {
 
-    private ArrayList<Integer> idEntrega = new ArrayList<Integer>();
+    private int idEntrega;
     private Date previsao;
     private Date dataEnvio;
 
-    public boolean setId(int idEntrega){
+    public void setId(int idEntrega){
         this.idEntrega = idEntrega;
     }
 
@@ -14,12 +16,20 @@ public class Entrega {
         return this.idEntrega;
     }
 
-    public boolean setPrevisao(Date previsao){
-        
+    public void setPrevisao(Date previsao){
+        this.previsao = previsao;
     }
 
     public Date getPrevisao(){
         return this.previsao;
+    }
+    
+    public void setDataEnvio(Date dataEnvio){
+    	this.dataEnvio = dataEnvio;
+    }
+    
+    public Date getDataEnvio() {
+    	return this.dataEnvio;
     }
 
 }

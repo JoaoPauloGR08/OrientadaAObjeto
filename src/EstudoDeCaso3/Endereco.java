@@ -4,34 +4,58 @@ public class Endereco {
 
     private String rua;
     private String complemento;
-    private String Bairro;
+    private String bairro;
     private int numero;
     private String cep;
 
-    public boolean setRua (String rua){}{
+    public boolean setRua (String rua){
         if(rua.length() > 5){
-            return True;
             this.rua = rua;
+            return true;
         }
-        return False;
+        return false;
     }
 
     public String getRua(){
         return this.rua;
     }
 
-    public boolean setComplemento (String complemento){
+    public void setComplemento (String complemento){
 
         this.complemento = complemento;
     }
 
-    public void setComplemento(String complemento) {
-
-        return this.complemento;   
-    }
-    
     public String getComplemento() {
 
         return this.complemento;
     }
+    
+    public boolean setBairro(String bairro) {
+    	if(bairro.matches(".*[a-zA-Z].*")) {
+    		this.bairro = bairro;
+    		return true;
+    	}
+    	return false;
+    }
+    
+    public String getBairro() {
+    	return this.bairro;
+    }
+    
+    public void setNumero(int numero) {
+    	this.numero = numero;
+    }
+    
+    public int getNumero() {
+    	return this.numero;
+    }
+    
+    public void setCep(String cep) {
+    	this.cep = cep;
+    }
+    
+    public String getCep() {
+    	return this.cep;
+    }
+    
 }
