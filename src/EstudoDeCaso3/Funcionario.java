@@ -4,116 +4,101 @@ import java.util.Date;
 
 public class Funcionario {
 
-    private String idFuncionario;
-    private String nome;
-    private String cargo;
-    private String cpf;
-    private String rg;
-    private Date dataNascimento;
-    private Date dataAdmisao;
-    private float cargaHoraria;
-    private float salario;
+	private String idFuncionario;
+	private String nome;
+	private String cargo;
+	private String cpf;
+	private String rg;
+	private Date dataNascimento;
+	private Date dataAdmisao;
+	private float cargaHoraria;
+	private float salario;
 
-    public void setId(String idFuncionario) {
+	public void setId(String idFuncionario) {
+		this.idFuncionario = idFuncionario;
+	}
 
-        this.idFuncionario = idFuncionario;
-    }
+	public String getId() {
+		return this.idFuncionario;
+	}
 
-    public String getId() {
-        return this.idFuncionario;
-    }
+	public boolean setNome(String nome) {
+		if (nome.matches(".[a-zA-Z].")) {
+			this.nome = nome;
+			return true;
+		}
+		return false;
+	}
 
-    public boolean setNome(String nome) {
-        if (nome.matches(".[a-zA-Z].")) {
-            this.nome = nome;
-            return true;
-        }
-        return false;
-    }
+	public String getNome() {
+		return this.nome;
+	}
 
-    public String getNome() {
-        return this.nome;
-    }
+	public void setCargo(String cargo) {
+		this.cargo = cargo;
+	}
 
-    public void setCargo(String cargo) {
+	public String getCargo() {
+		return this.cargo;
+	}
 
-        this.cargo = cargo;
-    }
+	public boolean setCpf(String cpf) {
+		if (cpf.length() == 11) {
 
-    public String getCargo() {
+			return true;
+		}
+		return false;
+	}
 
-        return this.cargo;
-    }
+	public String getCpf() {
+		return this.cpf;
+	}
 
-    public boolean setCpf(String cpf) {
+	public boolean setRg(String rg) {
+		if (rg.length() == 8) {
 
-        if (cpf.length() == 11) {
+			return true;
+		}
+		return false;
+	}
 
-            return true;
-        }
-        return false;
-    }
+	public String getRg() {
+		return this.rg;
+	}
 
-    public String getCpf() {
+	public void getDataNascimento(Date dataNascimento) {
+		this.dataNascimento = dataNascimento;
+	}
 
-        return this.cpf;
-    }
+	public Date setdataNascimento() {
+		return this.dataNascimento;
+	}
 
-    public boolean setRg(String rg) {
+	public void getDataAdmisao(Date dataAdmisao) {
+		this.dataAdmisao = dataAdmisao;
+	}
 
-        if (rg.length() == 8) {
+	public Date setDataAdmisao() {
+		return this.dataAdmisao;
+	}
 
-            return true;
-        }
-        return false;
-    }
+	public boolean getCargaHoraria(float cargaHoraria) {
+		if (cargaHoraria > 220) {
 
-    public String getRg() {
+			return true;
+		}
+		return false;
+	}
 
-        return this.rg;
-    }
+	public float setCargaHoraria() {
+		return this.cargaHoraria;
+	}
 
-    public void getDataNascimento(Date dataNascimento) {
+	public void getSalario(float salario) {
+		this.salario = salario;
+	}
 
-        this.dataNascimento = dataNascimento;
-    }
-
-    public Date setdataNascimento() {
-
-        return this.dataNascimento;
-    }
-
-    public void getDataAdmisao(Date dataAdmisao) {
-
-        this.dataAdmisao = dataAdmisao;
-    }
-
-    public Date setDataAdmisao() {
-
-        return this.dataAdmisao;
-    }
-
-    public boolean getCargaHoraria(float cargaHoraria) {
-
-        if (cargaHoraria > 220) {
-
-            return true;
-        }
-        return false;
-    }
-
-    public float setCargaHoraria() {
-
-        return this.cargaHoraria;
-    }
-
-    public void getSalario(float salario) {
-
-        this.salario = salario;
-    }
-
-    public float setSalario() {
-
-        return this.salario;
-    }
+	public float setSalario() {
+		return this.salario;
+	}
 }

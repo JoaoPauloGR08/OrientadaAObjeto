@@ -21,12 +21,10 @@ public class Endereco {
     }
 
     public void setComplemento (String complemento){
-
         this.complemento = complemento;
     }
 
     public String getComplemento() {
-
         return this.complemento;
     }
     

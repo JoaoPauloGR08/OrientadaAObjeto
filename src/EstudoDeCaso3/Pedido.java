@@ -3,8 +3,6 @@ package EstudoDeCaso3;
 import java.util.ArrayList;
 import java.util.Date;
 
-import SistemaVendas.Produto;
-
 public class Pedido {
 
 	private int idPedido;
