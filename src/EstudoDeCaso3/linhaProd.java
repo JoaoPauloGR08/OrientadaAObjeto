@@ -2,7 +2,7 @@ package EstudoDeCaso3;
 
 import java.util.ArrayList;
 
-public class linhaProd {
+public class LinhaProd {
 
 	private int idLinha;
 	private ArrayList<Maquina> maquina = new ArrayList<Maquina>();

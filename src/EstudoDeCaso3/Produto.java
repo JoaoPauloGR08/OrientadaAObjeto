@@ -11,7 +11,7 @@ public class Produto {
 		this.idProduto = idProduto;
 	}
 
-	public int getIdProtudo() {
+	public int getIdProduto() {
 		return this.idProduto;
 	}
 
@@ -38,5 +38,5 @@ public class Produto {
 	public String getProcessoFabricacao() {
 		return processoFabricacao;
 	}
-
+	
 }

@@ -5,6 +5,7 @@ public class Maquina {
 	private String modelo;
 	private String fabricante;
 	private int codigo;
+	private String status;
 	private String funcao;
 
 	public void setModelo(String modelo) {
@@ -29,6 +30,14 @@ public class Maquina {
 
 	public int getCodigo() {
 		return this.codigo;
+	}
+	
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public String getStatus() {
+		return this.status;
 	}
 
 	public void setFuncao(String funcao) {
