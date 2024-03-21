@@ -1,11 +1,14 @@
 package EstudoDeCaso3;
 
+import java.util.ArrayList;
+
 public class Produto {
 
 	private int idProduto;
 	private float preco;
 	private int tempoProducao;
 	private String processoFabricacao;
+	private ArrayList<ComponenteFabrica> componenteFabrica = new ArrayList<>();
 
 	public void setIdProduto(int idProduto) {
 		this.idProduto = idProduto;
@@ -40,11 +43,11 @@ public class Produto {
 	}
 
 	public void adicionarComponente(ComponenteFabrica componente) { // Implementação para adicionar componente
-
+		this.componenteFabrica.add(componente);
 	}
 
-	public void removerComponente(ComponenteFabrica componente) { // Implementação para remover componente
-
+	public void removerComponente(int indice) { // Implementação para remover componente
+		this.componenteFabrica.remove(indice);
 	}
 
 }
