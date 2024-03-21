@@ -7,6 +7,7 @@ public class Maquina {
 	private int codigo;
 	private String status;
 	private String funcao;
+	private ComponenteFabrica componenteFabrica;
 
 	public void setModelo(String modelo) {
 		this.modelo = modelo;
@@ -46,6 +47,14 @@ public class Maquina {
 
 	public String getFuncao() {
 		return this.funcao;
+	}
+	
+	public void setComponenteFabrica(ComponenteFabrica componenteFabrica) {
+		this.componenteFabrica = componenteFabrica;
+	}
+
+	public ComponenteFabrica getComponenteFabrica() {
+		return this.componenteFabrica;
 	}
 
 }

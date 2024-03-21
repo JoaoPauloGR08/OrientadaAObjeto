@@ -10,7 +10,7 @@ public class Produto {
 	public void setIdProduto(int idProduto) {
 		this.idProduto = idProduto;
 	}
-
+	
 	public int getIdProduto() {
 		return this.idProduto;
 	}
@@ -18,7 +18,7 @@ public class Produto {
 	public void setPreco(float preco) {
 		this.preco = preco;
 	}
-
+	
 	public float getPreco() {
 		return this.preco;
 	}
@@ -26,7 +26,7 @@ public class Produto {
 	public void setTempoProducao(int tempoProducao) {
 		this.tempoProducao = tempoProducao;
 	}
-
+	
 	public int getTempoProducao() {
 		return this.tempoProducao;
 	}
@@ -34,9 +34,17 @@ public class Produto {
 	public void setProcessoFabricacao(String processoFabricacao) {
 		this.processoFabricacao = processoFabricacao;
 	}
-
-	public String getProcessoFabricacao() {
-		return processoFabricacao;
-	}
 	
+	public String getProcessoFabricacao() {
+		return this.processoFabricacao;
+	}
+
+	public void adicionarComponente(ComponenteFabrica componente) { // Implementação para adicionar componente
+
+	}
+
+	public void removerComponente(ComponenteFabrica componente) { // Implementação para remover componente
+
+	}
+
 }
