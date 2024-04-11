@@ -4,7 +4,7 @@ public class AcessoSistema {
 	
 	private Maquina maquina;
 	private Operador operador;
-	private LinhaProd linhaProd;
+	private linhaProd linhaProd;
 	private int idSistema;
 	
 	public void setMaquina(Maquina maquina) {
@@ -23,11 +23,11 @@ public class AcessoSistema {
 		return this.operador;
 	}
 	
-	public void setLinhaProd(LinhaProd linhaProd) {
+	public void setLinhaProd(linhaProd linhaProd) {
 		this.linhaProd = linhaProd;
 	}
 	
-	public LinhaProd getLinhaProd() {
+	public linhaProd getLinhaProd() {
 		return this.linhaProd;
 	}
 	

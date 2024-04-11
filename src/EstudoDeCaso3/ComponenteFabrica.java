@@ -2,14 +2,14 @@ package EstudoDeCaso3;
 
 public class ComponenteFabrica {
 
-	private int id;
+	private String id;
 	private String nome;
 
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
-	public int getId() {
+	public String getId() {
 		return this.id;
 	}
 

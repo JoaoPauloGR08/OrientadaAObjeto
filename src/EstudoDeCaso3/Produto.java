@@ -4,17 +4,26 @@ import java.util.ArrayList;
 
 public class Produto {
 
-	private int idProduto;
+	private String idProduto;
+	private String nomeProduto;
 	private float preco;
 	private int tempoProducao;
 	private String processoFabricacao;
 	private ArrayList<ComponenteFabrica> componenteFabrica = new ArrayList<>();
 
-	public void setIdProduto(int idProduto) {
-		this.idProduto = idProduto;
+	public void setNome(String nome) {
+		this.nomeProduto = nome;
 	}
 	
-	public int getIdProduto() {
+	public String getNome() {
+		return this.nomeProduto;
+	}
+	
+	public void setIdProduto(String id) {
+		this.idProduto = id;
+	}
+	
+	public String getIdProduto() {
 		return this.idProduto;
 	}
 
