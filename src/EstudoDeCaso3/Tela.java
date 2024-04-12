@@ -2,18 +2,24 @@ package EstudoDeCaso3;
 
 import java.awt.GridLayout;
 
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.JToggleButton;
+import javax.swing.table.DefaultTableModel;
 
 public class Tela {
 
 	@SuppressWarnings("unused")
 	public static void main(String[] args) {
+		
+		boolean auxEC = false;
 		
 		// Cliente
 		
@@ -72,26 +78,47 @@ public class Tela {
 		lPedido.add(senhaCliente);
 		lPedido.add(txSenhaCliente);
 		
-		JOptionPane.showMessageDialog(null, lPedido);
-		
-		if(cliente.testeLogin(txLoginCliente.getText(), new String(txSenhaCliente.getPassword()))) {
-			JOptionPane.showMessageDialog(null, "Login realizado com sucesso!");
-		} else {
-			JOptionPane.showMessageDialog(null, "Login ou senha incorretos!");
-		}
-		
 		JPanel mPedido = new JPanel();
 		mPedido.setLayout(new GridLayout(2,1));
 		mPedido.add(nomeProduto);
 		mPedido.add(txNomeProduto);
 		
-		JOptionPane.showMessageDialog(lPedido, mPedido);
+		JOptionPane.showMessageDialog(null, lPedido);
 		
-		cliente.setNome(txNomeCliente.getText());
-		cliente.setId(txIdCliente.getText());
-		ped.setCliente(cliente);
+		JTable tabela = new JTable();
 		
-		JOptionPane.showMessageDialog(null, "Pedido feito com sucesso!");
+		DefaultTableModel modelo = (DefaultTableModel) tabela.getModel();
+
+			modelo.addColumn("Id");
+			modelo.addColumn("Nome");
+	        
+	        for (int i = 0; i < tabela.getColumnCount(); i++) {
+	            Class<?> columnClass = tabela.getColumnClass(i);
+	            tabela.setDefaultEditor(columnClass, null);
+	        }
+		if(auxEC == true) {
+			
+			if(cliente.testeLogin(txLoginCliente.getText(), new String(txSenhaCliente.getPassword()))) {
+				JOptionPane.showMessageDialog(null, "Login realizado com sucesso!");
+				
+				JFrame frame = new JFrame("Tabela de Produtos");
+		        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		        frame.getContentPane().add(new JScrollPane(tabela));
+		        frame.pack();
+		        frame.setVisible(true);
+				
+				JOptionPane.showMessageDialog(lPedido, mPedido);
+				
+				frame.setVisible(false);
+				
+				ped.setCliente(cliente);
+				
+				JOptionPane.showMessageDialog(null, "Pedido feito com sucesso!");
+			} else {
+				JOptionPane.showMessageDialog(null, "Login ou senha incorretos!");
+			}
+		
+		}
 		
 	}
 	

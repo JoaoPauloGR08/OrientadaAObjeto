@@ -10,6 +10,10 @@ public class Cliente {
     private String senha="123";
     
     
+    public Cliente() {
+    	
+    }
+    
     public boolean testeLogin(String login, String senha) {
     	if(login.equals(this.login) && senha.equals(this.senha))
     		return true;
