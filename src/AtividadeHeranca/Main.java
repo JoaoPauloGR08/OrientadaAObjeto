@@ -2,7 +2,7 @@ package AtividadeHeranca;
 
 public class Main {
 
-	public static void main() {
+	public static void main(String[] args) {
 	
 		// Leão
 		Leao leao = new Leao();
@@ -16,11 +16,11 @@ public class Main {
 		// Tigre
 		Tigre tigre = new Tigre();
 		tigre.setNome("Tigre");
-		tigre.setIdade(10); // Define a idade do tigre
-		tigre.setPeso(120.3); // Define o peso do tigre
-		tigre.setMediaPorGeracao(2); // Define a média de filhotes por geração
-		tigre.setHabitat("Floresta"); // Define o habitat do tigre
-		tigre.setExpectativaDeVida(15); // Define a expectativa de vida do tigre
+		tigre.setIdade(10);
+		tigre.setPeso(120.3);
+		tigre.setMediaPorGeracao(2);
+		tigre.setHabitat("Floresta");
+		tigre.setExpectativaDeVida(15);
 
 		// Leopardo
 		Leopardo leo = new Leopardo();
@@ -223,6 +223,29 @@ public class Main {
 		//Mostrar infos
 		
 		leao.mostrarInfo();
+		tigre.mostrarInfo();
+		leo.mostrarInfo();
+		dog.mostrarInfo();
+		lobo.mostrarInfo();
+		rap.mostrarInfo();
+		mac.mostrarInfo();
+		chimps.mostrarInfo();
+		gor.mostrarInfo();
+		aguia.mostrarInfo();
+		falc.mostrarInfo();
+		coruja.mostrarInfo();
+		pato.mostrarInfo();
+		ganso.mostrarInfo();
+		garca.mostrarInfo();
+		cobra.mostrarInfo();
+		anac.mostrarInfo();
+		python.mostrarInfo();
+		mar.mostrarInfo();
+		terra.mostrarInfo();
+		aguaD.mostrarInfo();
+		com.mostrarInfo();
+		boi.mostrarInfo();
+		ven.mostrarInfo();
 	
 	}
 	
