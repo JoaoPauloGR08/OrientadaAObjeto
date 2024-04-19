@@ -8,28 +8,33 @@ public class ProdutoWeg {
 	private double tensao;
 	private int capacidade;
 	private double preco;
-	
+
 	public ProdutoWeg() {
-		
+
 	}
+
 	public ProdutoWeg(int codigo) {
 		setCodigo(codigo);
 	}
+
 	public ProdutoWeg(int codigo, String tipo) {
 		setCodigo(codigo);
 		setTipo(tipo);
 	}
+
 	public ProdutoWeg(int codigo, String tipo, double potencia) {
 		setCodigo(codigo);
 		setTipo(tipo);
 		setPotencia(potencia);
 	}
+
 	public ProdutoWeg(int codigo, String tipo, double potencia, double tensao) {
 		setCodigo(codigo);
 		setTipo(tipo);
 		setPotencia(potencia);
 		setTensao(tensao);
 	}
+
 	public ProdutoWeg(int codigo, String tipo, double potencia, double tensao, int capacidade) {
 		setCodigo(codigo);
 		setTipo(tipo);
@@ -37,6 +42,7 @@ public class ProdutoWeg {
 		setTensao(tensao);
 		setCapacidade(capacidade);
 	}
+
 	public ProdutoWeg(int codigo, String tipo, double potencia, double tensao, int capacidade, double preco) {
 		setCodigo(codigo);
 		setTipo(tipo);
@@ -45,50 +51,61 @@ public class ProdutoWeg {
 		setCapacidade(capacidade);
 		setPreco(preco);
 	}
-	
+
 	public int getCodigo() {
 		return this.codigo;
 	}
+
 	public void setCodigo(int codigo) {
 		this.codigo = codigo;
 	}
+
 	public String getTipo() {
 		return this.tipo;
 	}
+
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}
+
 	public double getPotencia() {
 		return this.potencia;
 	}
+
 	public void setPotencia(double potencia) {
 		this.potencia = potencia;
 	}
+
 	public double getTensao() {
 		return this.tensao;
 	}
+
 	public void setTensao(double tensao) {
 		this.tensao = tensao;
 	}
+
 	public int getCapacidade() {
 		return this.capacidade;
 	}
+
 	public void setCapacidade(int capacidade) {
 		this.capacidade = capacidade;
 	}
+
 	public double getPreco() {
 		return this.preco;
 	}
+
 	public void setPreco(double preco) {
 		this.preco = preco;
 	}
-	
+
 	ServicoManutencao sm = new ServicoManutencao();
-	
+
 	public void realizarManutencao(int codigo, String descricao, double custo) {
 		setCodigo(codigo);
 		sm.setDescricao(descricao);
 		sm.setCusto(custo);
 	}
-	
+
 }
