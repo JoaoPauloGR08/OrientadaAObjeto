@@ -1,3 +1,9 @@
+/**
+ * 
+ * @author João Paulo
+ * 
+ */
+
 package Atividade5;
 
 public class MotorEletrico extends ProdutoWeg {

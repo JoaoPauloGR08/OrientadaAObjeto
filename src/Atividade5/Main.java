@@ -1,3 +1,9 @@
+/**
+ * 
+ * @author João Paulo
+ * 
+ */
+
 package Atividade5;
 
 import java.util.Scanner;
@@ -14,6 +20,7 @@ public class Main {
 		ServicoManutencao sm = new ServicoManutencao();
 		int op = 10;
 		int opA = 10, opA2 = 10;
+		int aux = 0;
 
 		do {
 
@@ -48,8 +55,17 @@ public class Main {
 
 					if (opA2 == 1) {
 
-						ge = new Gerador(353, "Elétrico", 10000, 220, 20000, 15000, "Energia", 50);
-						w.addGe(ge);
+						if(aux == 0) {
+							ge = new Gerador(353, "Elétrico", 10000, 220, 20000, 15000, "Energia", 50);
+							w.addGe(ge);
+							aux++;
+						} else if(aux == 1) {
+							ge = new Gerador(777, "Elétrico", 10000, 220, 20000, 15000, "Energia", 50);
+							w.addGe(ge);
+						} else {
+							ge = new Gerador(888, "Elétrico", 10000, 220, 20000, 15000, "Energia", 50);
+							w.addGe(ge);
+						}
 
 					} else if (opA2 == 2) {
 

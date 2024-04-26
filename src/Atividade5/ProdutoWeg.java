@@ -1,3 +1,9 @@
+/**
+ * 
+ * @author João Paulo
+ * 
+ */
+
 package Atividade5;
 
 public class ProdutoWeg {
@@ -56,8 +62,12 @@ public class ProdutoWeg {
 		return this.codigo;
 	}
 
-	public void setCodigo(int codigo) {
-		this.codigo = codigo;
+	public boolean setCodigo(int codigo) {
+		if(codigo > 0) {
+			this.codigo = codigo;
+			return true;
+		}
+		return false;
 	}
 
 	public String getTipo() {
