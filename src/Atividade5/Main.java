@@ -20,13 +20,13 @@ public class Main {
 		ServicoManutencao sm = new ServicoManutencao();
 		int op = 10;
 		int opA = 10, opA2 = 10;
-		int aux = 0;
 
 		do {
 
 			System.out.println("-========== MENU ==========-");
 			System.out.println(" 1 - Adicionar");
-			System.out.println(" 2 - Exibir");
+			System.out.println(" 2 - Remover");
+			System.out.println(" 3 - Exibir");
 			System.out.println(" 0 - Sair");
 			System.out.print(" Insira a opção: ");
 			op = sc.nextInt();
@@ -55,7 +55,7 @@ public class Main {
 
 					if (opA2 == 1) {
 
-						ge = new Gerador(353, "Elétrico", 10000, 220, 20000, 15000, "Energia", 50);
+						ge = new Gerador(333, "Elétrico", 10000, 220, 20000, 15000, "Energia", 50);
 						w.addGe(ge);
 
 					} else if (opA2 == 2) {
@@ -84,7 +84,8 @@ public class Main {
 
 					if (opA2 == 1) {
 
-						sm = new ServicoManutencao("Limpeza leve", 250);
+						int cod = 333;
+						sm = new ServicoManutencao(222, "Limpeza leve", 250, w.getMaquinaCode(cod));
 						w.addServico(sm);
 
 					} else {
@@ -93,7 +94,7 @@ public class Main {
 				} else {
 				}
 
-			} else if (op == 2) {
+			} else if (op == 3) {
 				System.out.println("-===== EXIBIR LISTAS =====-");
 				System.out.println(" 1 - Lista de Produtos");
 				System.out.println(" 2 - Lista de Manutenção");
@@ -113,6 +114,59 @@ public class Main {
 					w.listaManutencao();
 
 				} else {
+				}
+
+			} else if (op == 2) {
+
+				System.out.println("-===== MENU REMOVER =====-");
+				System.out.println(" 1 - Produtos");
+				System.out.println(" 2 - Serviços");
+				System.out.println(" 0 - Sair");
+				System.out.print(" Insira a opção: ");
+				opA = sc.nextInt();
+				System.out.println();
+
+				if (opA == 1) {
+
+					System.out.println("-=== REMOVER PRODUTO ===-");
+					System.out.println(" 1 - Gerador");
+					System.out.println(" 2 - Inversor de Frequencia");
+					System.out.println(" 3 - Motor Eletrico");
+					System.out.println(" 0 - Sair");
+					System.out.print(" Insira a opção: ");
+					opA2 = sc.nextInt();
+					System.out.println();
+
+					if (opA2 == 1) {
+
+						w.remGe(333);
+
+					} else if (opA2 == 2) {
+
+						w.remIv(3902);
+
+					} else if (opA2 == 3) {
+
+						w.remMe(9324);
+
+					} else {
+					}
+
+				} else if (opA == 2) {
+
+					System.out.println("-=== REMOVER SERVIÇO ===-");
+					System.out.println(" 1 - Manutenção");
+					System.out.println(" 0 - Sair");
+					System.out.print(" Insira a opção: ");
+					opA2 = sc.nextInt();
+					System.out.println();
+
+					if (opA2 == 1) {
+
+						w.realizarManutencao(222);
+
+					}
+
 				}
 
 			}

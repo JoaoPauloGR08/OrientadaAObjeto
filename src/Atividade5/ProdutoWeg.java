@@ -63,7 +63,7 @@ public class ProdutoWeg {
 	}
 
 	public boolean setCodigo(int codigo) {
-		if(codigo > 0) {
+		if (codigo > 0) {
 			this.codigo = codigo;
 			return true;
 		}
@@ -108,14 +108,6 @@ public class ProdutoWeg {
 
 	public void setPreco(double preco) {
 		this.preco = preco;
-	}
-
-	ServicoManutencao sm = new ServicoManutencao();
-
-	public void realizarManutencao(int codigo, String descricao, double custo) {
-		setCodigo(codigo);
-		sm.setDescricao(descricao);
-		sm.setCusto(custo);
 	}
 
 }
