@@ -74,33 +74,60 @@ public class Weg {
 	}
 
 	public void addGe(Gerador prod) {
-		if(ge.size() > 0) {
-			for (int i = 0; i < me.size(); i++) {
-				if(ge.get(i).getCodigo() == prod.getCodigo()) {
-					System.out.println("Já existe um gerador com o ID " + prod.getCodigo() + ".");
-				} else {
-					ge.add(prod);
-				}
-			}
-		} else {
-			ge.add(prod);
-		}
+	    if(ge.size() > 0) {
+	        boolean productFound = false;
+	        for (int i = 0; i < ge.size(); i++) {
+	            if(ge.get(i).getCodigo() == prod.getCodigo()) {
+	                System.out.println("Já existe um gerador com o ID " + prod.getCodigo() + ".");
+	                System.out.println();
+	                productFound = true;
+	                break;
+	            }
+	        }
+	        if (!productFound) {
+	            ge.add(prod);
+	        }
+	    } else {
+	        ge.add(prod);
+	    }
 	}
 
 	public void addIv(InversorFrequencia prod) {
-		if (!iv.contains(prod)) {
-			iv.add(prod);
-		} else {
-			System.out.println("Já existe um inversor de frequência com o ID " + prod.getCodigo() + ".");
-		}
+	    if(iv.size() > 0) {
+	        boolean productFound = false;
+	        for (int i = 0; i < iv.size(); i++) {
+	            if(iv.get(i).getCodigo() == prod.getCodigo()) {
+	                System.out.println("Já existe um gerador com o ID " + prod.getCodigo() + ".");
+	                System.out.println();
+	                productFound = true;
+	                break;
+	            }
+	        }
+	        if (!productFound) {
+	        	iv.add(prod);
+	        }
+	    } else {
+	    	iv.add(prod);
+	    }
 	}
 
 	public void addMe(MotorEletrico prod) {
-		if (!me.contains(prod)) {
-			me.add(prod);
-		} else {
-			System.out.println("Já existe um motor elétrico com o ID " + prod.getCodigo() + ".");
-		}
+	    if(me.size() > 0) {
+	        boolean productFound = false;
+	        for (int i = 0; i < me.size(); i++) {
+	            if(me.get(i).getCodigo() == prod.getCodigo()) {
+	                System.out.println("Já existe um gerador com o ID " + prod.getCodigo() + ".");
+	                System.out.println();
+	                productFound = true;
+	                break;
+	            }
+	        }
+	        if (!productFound) {
+	        	me.add(prod);
+	        }
+	    } else {
+	    	me.add(prod);
+	    }
 	}
 
 }
