@@ -180,9 +180,15 @@ public class ProdutoWeg {
      * Define a tensão do produto da Weg.
      * 
      * @param tensao A tensão do produto da Weg.
+     * 
+     * @return caso tensão esteja entre 2200 e -220 return true, senão return false
      */
-    public void setTensao(double tensao) {
-        this.tensao = tensao;
+    public boolean setTensao(double tensao) {
+    	if(tensao >= -2200 && tensao <= 2200) {
+    		this.tensao = tensao;
+    		return true;
+    	}
+    	return false;
     }
 
     /**
@@ -216,9 +222,15 @@ public class ProdutoWeg {
      * Define o preço do produto da Weg.
      * 
      * @param preco O preço do produto da Weg.
+     * 
+     * @return caso preço seja maior que 0 return true, senão return false
      */
-    public void setPreco(double preco) {
-        this.preco = preco;
+    public boolean setPreco(double preco) {
+    	if(preco > 0) {
+    		this.preco = preco;
+    		return true;
+    	}
+    	return false;
     }
 
 }

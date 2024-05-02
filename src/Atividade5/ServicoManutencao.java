@@ -101,9 +101,15 @@ public class ServicoManutencao {
      * Define o custo do serviço de manutenção.
      * 
      * @param custo O custo do serviço de manutenção.
+     * 
+     * @return caso custo seja maior que 0 return true, senão return false
      */
-    public void setCusto(double custo) {
-        this.custo = custo;
+    public boolean setCusto(double custo) {
+        if(custo > 0) {
+    		this.custo = custo;
+    		return true;
+        }
+        return false;
     }
 
     /**

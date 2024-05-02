@@ -158,9 +158,15 @@ public class Gerador extends ProdutoWeg {
      * Define a autonomia do gerador.
      * 
      * @param autonomia A autonomia do gerador.
+     * 
+     * @return caso autonômia seja maior que 0 return true, senão return false
      */
-    public void setAutonomia(double autonomia) {
-        this.autonomia = autonomia;
+    public boolean setAutonomia(double autonomia) {
+    	if(autonomia > 0) {
+    		this.autonomia = autonomia;
+    		return true;
+    	}
+    	return false;
     }
     
     /**

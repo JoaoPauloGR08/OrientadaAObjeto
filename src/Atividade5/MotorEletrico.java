@@ -158,10 +158,16 @@ public class MotorEletrico extends ProdutoWeg {
      * Define a eficiência do motor elétrico.
      * 
      * @param eficiencia A eficiência do motor elétrico.
+     * 
+     * @return caso eficiência seja maior que 0 return true, senão return false
      */
-    public void setEficiencia(double eficiencia) {
-        this.eficiencia = eficiencia;
-    }
+    public boolean setEficiencia(double eficiencia) {
+    	if(eficiencia > 0) {
+    		this.eficiencia = eficiencia;
+    		return true;
+    	}
+    	return false;
+   	}
 
     /**
      * Método para obter informações completas sobre o motor elétrico.

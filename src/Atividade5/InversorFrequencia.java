@@ -158,9 +158,15 @@ public class InversorFrequencia extends ProdutoWeg {
      * Define o número de fases do inversor de frequência.
      * 
      * @param numeroFases O número de fases do inversor de frequência.
+     * 
+     * @return caso número de fases seja maior que 0 return true, senão return false
      */
-    public void setNumeroFases(int numeroFases) {
-        this.numeroFases = numeroFases;
+    public boolean setNumeroFases(int numeroFases) {
+    	if(numeroFases > 0) {
+    		this.numeroFases = numeroFases;
+    		return true;
+    	}
+    	return false;
     }
 
     /**
