@@ -1,54 +1,35 @@
 package Testes;
 
-import javax.swing.*;
-import javax.swing.border.EmptyBorder;
-import java.awt.*;
+import java.awt.Font;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
 import java.util.Random;
 
-// Classe que representa os dados climáticos
-class DadosClimaticos {
-    private float temperatura;
-    private float umidade;
-    private float pressao;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
 
-    public DadosClimaticos(float temperatura, float umidade, float pressao) {
-        this.temperatura = temperatura;
-        this.umidade = umidade;
-        this.pressao = pressao;
-    }
-
-    public float getTemperatura() {
-        return temperatura;
-    }
-
-    public float getUmidade() {
-        return umidade;
-    }
-
-    public float getPressao() {
-        return pressao;
-    }
-}
-
-// Interface para telas de exibição
+// Interface que define um método para atualizar as telas de exibição
 interface Display {
-    void update(DadosClimaticos dadosClimaticos, String data);
+    void update(float temperatura, float umidade, float pressao, String data);
 }
 
 // Implementação de uma tela de exibição para as condições atuais
-class DisplayCondicõesAtuais extends JPanel implements Display {
+class CurrentConditionsDisplay extends JPanel implements Display {
     private JLabel temperaturaLabel;
     private JLabel umidadeLabel;
     private JLabel pressaoLabel;
     private JLabel dataLabel;
 
-    public DisplayCondicõesAtuais() {
-        setBackground(Color.WHITE);
+    public CurrentConditionsDisplay() {
         setLayout(new GridLayout(4, 1));
         setBorder(new EmptyBorder(10, 10, 10, 10));
         temperaturaLabel = new JLabel("Temperatura: ");
@@ -66,186 +47,129 @@ class DisplayCondicõesAtuais extends JPanel implements Display {
     }
 
     @Override
-    public void update(DadosClimaticos dadosClimaticos, String data) {
-        // Atualiza a exibição com os dados climáticos atuais e a data
-        temperaturaLabel.setText("Temperatura: " + String.format("%.1f", dadosClimaticos.getTemperatura()) + "°C");
-        umidadeLabel.setText("Umidade: " + String.format("%.1f", dadosClimaticos.getUmidade()) + "%");
-        pressaoLabel.setText("Pressão: " + String.format("%.1f", dadosClimaticos.getPressao()) + "hPa");
+    public void update(float temperatura, float umidade, float pressao, String data) {
+        // Atualiza a tela de exibição com os novos valores
+        temperaturaLabel.setText("Temperatura: " + String.format("%.1f", temperatura) + "°C");
+        umidadeLabel.setText("Umidade: " + String.format("%.1f", umidade) + "%");
+        pressaoLabel.setText("Pressão: " + String.format("%.1f", pressao) + "hPa");
         dataLabel.setText("Data: " + data);
     }
 }
 
 // Implementação de uma tela de exibição para os dados dos dias anteriores
-class DisplayDiasAnteriores extends JPanel implements Display {
-    private JLabel[] labels;
-    private ArrayList<DadosClimaticos> dadosAnteriores;
-    private String[] datas;
+class PastConditionsDisplay extends JPanel implements Display {
+    private List<JLabel> labels = new ArrayList<>();
 
-    public DisplayDiasAnteriores(int numDias) {
-        setBackground(Color.WHITE);
+    public PastConditionsDisplay(int numDias) {
         setLayout(new GridLayout(numDias, 1));
         setBorder(new EmptyBorder(10, 10, 10, 10));
-        labels = new JLabel[numDias];
-        dadosAnteriores = new ArrayList<>();
-        datas = new String[numDias];
         for (int i = 0; i < numDias; i++) {
-            labels[i] = new JLabel();
-            labels[i].setFont(new Font("Arial", Font.PLAIN, 12));
-            final int index = i;
-            labels[i].addMouseListener(new MouseAdapter() {
-                @Override
-                public void mouseClicked(MouseEvent e) {
-                    super.mouseClicked(e);
-                    mostrarDetalhesDia(index);
-                }
-            });
-            add(labels[i]);
+            JLabel label = new JLabel();
+            label.setFont(new Font("Arial", Font.BOLD, 14));
+            labels.add(label);
+            add(label);
         }
     }
 
     @Override
-    public void update(DadosClimaticos dadosClimaticos, String data) {
-        // Adiciona os dados climáticos atuais à lista de dados anteriores
-        dadosAnteriores.add(new DadosClimaticos(dadosClimaticos.getTemperatura(), dadosClimaticos.getUmidade(), dadosClimaticos.getPressao()));
-        // Adiciona a data atual à lista de datas
-        datas[0] = data;
-
-        // Atualiza a exibição com os dados dos dias anteriores e as datas
-        for (int i = labels.length - 1; i > 0; i--) {
-            labels[i].setText(labels[i - 1].getText());
+    public void update(float temperatura, float umidade, float pressao, String data) {
+        // Atualiza a tela de exibição com os novos valores
+        for (int i = labels.size() - 1; i > 0; i--) {
+            labels.get(i).setText(labels.get(i - 1).getText());
         }
-        labels[0].setText("Dia Atual: " + String.format("%.1f", dadosClimaticos.getTemperatura()) + "°C / " +
-                String.format("%.1f", dadosClimaticos.getUmidade()) + "% / " +
-                String.format("%.1f", dadosClimaticos.getPressao()) + "hPa");
-    }
-
-    // Exibe os detalhes do dia selecionado
-    public void mostrarDetalhesDia(int index) {
-        // Verifica se o índice está dentro dos limites da lista de dados anteriores
-        if (index >= 0 && index < dadosAnteriores.size()) {
-            DadosClimaticos dados = dadosAnteriores.get(index);
-            String dataSelecionada = datas[index];
-            // Atualiza os displays com os dados do dia selecionado
-            for (Display display : displays) {
-                display.update(dados, dataSelecionada);
-            }
-        }
+        labels.get(0).setText(data + " - Temp: " + String.format("%.1f", temperatura) + "°C, Umidade: " + String.format("%.1f", umidade) + "%, Pressão: " + String.format("%.1f", pressao) + "hPa");
     }
 }
 
-// Classe que representa uma estação meteorológica
-class EstacaoMeteorologica {
-    private ArrayList<Display> displays;
-    private ArrayList<DadosClimaticos> dadosAnteriores;
-    private String[] datas;
-    private String dataAtual;
+// Estação meteorológica que mede as condições climáticas
+class WeatherStation {
+    private List<Display> displays = new ArrayList<>();
+    private float temperaturaAtual = 20; // Temperatura inicial
+    private float umidadeAtual = 80; // Umidade inicial
+    private float pressaoAtual = 1000; // Pressão inicial
+    private String dataAtual = "01/01/2024"; // Data inicial
 
-    public EstacaoMeteorologica() {
-        displays = new ArrayList<>();
-        dadosAnteriores = new ArrayList<>();
-        datas = new String[5];
-        // Inicializa a data atual como "01/01/2024"
-        dataAtual = "01/01/2024";
-    }
-
-    // Registra uma nova tela de exibição
     public void registrarDisplay(Display display) {
         displays.add(display);
     }
 
-    // Define novos valores para temperatura, umidade e pressão e notifica os displays
-    public void setMedicoes(float temperatura, float umidade, float pressao) {
-        // Adiciona os dados climáticos atuais à lista de dados anteriores
-        dadosAnteriores.add(new DadosClimaticos(temperatura, umidade, pressao));
-
-        // Atualiza os displays com os dados climáticos atuais e a data atual
+    // Define novos valores para temperatura, umidade e pressao
+    public void setMedicoes(float temperatura, float umidade, float pressao, String data) {
         for (Display display : displays) {
-            display.update(new DadosClimaticos(temperatura, umidade, pressao), dataAtual);
+            display.update(temperatura, umidade, pressao, data);
         }
+        temperaturaAtual = temperatura;
+        umidadeAtual = umidade;
+        pressaoAtual = pressao;
+        dataAtual = data;
     }
 
-    // Exibe os detalhes da data selecionada
-    public void mostrarDetalhesData(String data) {
-        // Verifica se a data selecionada está na lista de datas
-        if (dataAtual.equals(data)) {
-            // Se a data selecionada for a data atual, mostra os dados atuais
-            for (Display display : displays) {
-                display.update(dadosAnteriores.get(0), dataAtual);
-            }
-        } else {
-            // Se a data selecionada estiver na lista de datas anteriores, encontra os dados correspondentes
-            for (int i = 0; i < datas.length; i++) {
-                if (datas[i] != null && datas[i].equals(data)) {
-                    DadosClimaticos dados = dadosAnteriores.get(i);
-                    // Atualiza os displays com os dados do dia selecionado
-                    for (Display display : displays) {
-                        display.update(dados, data);
-                    }
-                    return;
-                }
-            }
-            // Se a data selecionada não estiver na lista de datas anteriores, exibe uma mensagem de erro
-            JOptionPane.showMessageDialog(null, "Dados para a data selecionada não encontrados.", "Erro", JOptionPane.ERROR_MESSAGE);
-        }
+    // Gera novos dados climáticos para o próximo dia com pequena variação
+    public void proximoDia() throws ParseException {
+        Random rand = new Random();
+        float variacaoTemperatura = rand.nextFloat() * 2 - 1; // Variação de temperatura entre -1°C e 1°C
+        float variacaoUmidade = rand.nextFloat() * 4 - 2; // Variação de umidade entre -2% e 2%
+        float variacaoPressao = rand.nextFloat() * 2 - 1; // Variação de pressão entre -1hPa e 1hPa
+        float temperatura = temperaturaAtual + variacaoTemperatura;
+        float umidade = umidadeAtual + variacaoUmidade;
+        float pressao = pressaoAtual + variacaoPressao;
+        setMedicoes(temperatura, umidade, pressao, obterDataProximoDia());
+    }
+
+    // Obtém a data do próximo dia
+    private String obterDataProximoDia() throws ParseException {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(dateFormat.parse(dataAtual)); // Define a data atual
+        cal.add(Calendar.DAY_OF_MONTH, 1); // Adiciona um dia
+        return dateFormat.format(cal.getTime());
+    }
+
+    // Obtém a data atual
+    public String getDataAtual() {
+        return dataAtual;
     }
 }
 
-// Classe que representa a estação central de monitoramento climático
 public class Testes {
     public static void main(String[] args) {
-        EstacaoMeteorologica estacaoMeteorologica = new EstacaoMeteorologica();
-
-        // Cria e registra telas de exibição
-        DisplayCondicõesAtuais displayCondicõesAtuais = new DisplayCondicõesAtuais();
-        DisplayDiasAnteriores displayDiasAnteriores = new DisplayDiasAnteriores(5);
-
+        // Configuração da janela principal
         JFrame frame = new JFrame("Central de Dados Climáticos");
-        frame.setLayout(new GridLayout(2, 1));
-        frame.add(displayCondicõesAtuais);
-        frame.add(displayDiasAnteriores);
-
-        // Botão para simular mudança de dados climáticos para cada dia
-        JButton proximoDiaButton = new JButton("Próximo Dia");
-        proximoDiaButton.setFont(new Font("Arial", Font.BOLD, 16));
-        proximoDiaButton.setBackground(new Color(0, 102, 0));
-        proximoDiaButton.setForeground(Color.WHITE);
-        proximoDiaButton.setFocusPainted(false);
-        proximoDiaButton.addActionListener(new ActionListener() {
-            private float temperatura = 20;
-            private float umidade = 60;
-            private float pressao = 1013;
-
-            private int contadorDias = 1;
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // Gerar valores aleatórios para temperatura, umidade e pressão
-                Random rand = new Random();
-                float variacaoTemperatura = rand.nextFloat() * 5 - 2.5f;
-                float variacaoUmidade = rand.nextFloat() * 10 - 5;
-                float variacaoPressao = rand.nextFloat() * 4 - 2;
-
-                temperatura += variacaoTemperatura;
-                umidade += variacaoUmidade;
-                pressao += variacaoPressao;
-
-                // Garante que os valores fiquem dentro do intervalo desejado
-                temperatura = Math.min(Math.max(temperatura, -5), 40);
-                umidade = Math.min(Math.max(umidade, 0), 100);
-                pressao = Math.min(Math.max(pressao, 980), 1040);
-
-                // Atualiza os dados climáticos e o título do frame
-                estacaoMeteorologica.setMedicoes(temperatura, umidade, pressao);
-                frame.setTitle("Central de Dados Climáticos - Dia " + contadorDias++);
-            }
-        });
-
-        frame.add(proximoDiaButton);
+        frame.setLayout(new GridLayout(3, 1));
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(400, 400);
+        frame.setSize(500, 300); // Tamanho da janela
         frame.setVisible(true);
 
-        estacaoMeteorologica.registrarDisplay(displayCondicõesAtuais);
-        estacaoMeteorologica.registrarDisplay(displayDiasAnteriores);
+        // Criação da estação meteorológica
+        WeatherStation estacaoMeteorologica = new WeatherStation();
+
+        // Criação e registro das telas de exibição
+        Display displayAtual = new CurrentConditionsDisplay();
+        estacaoMeteorologica.registrarDisplay(displayAtual);
+
+        Display displayAnterior = new PastConditionsDisplay(5);
+        estacaoMeteorologica.registrarDisplay(displayAnterior);
+
+        // Adição das telas de exibição à janela principal
+        frame.add((JPanel) displayAtual);
+        frame.add((JPanel) displayAnterior);
+
+        // Botão para gerar os dados do próximo dia
+        JButton proximoDiaButton = new JButton("Próximo Dia");
+        proximoDiaButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+					estacaoMeteorologica.proximoDia();
+				} catch (ParseException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+            }
+        });
+        frame.add(proximoDiaButton);
+
+        // Inicialização com os dados do primeiro dia
+        estacaoMeteorologica.setMedicoes(20, 80, 1000, "01/01/2024");
     }
 }

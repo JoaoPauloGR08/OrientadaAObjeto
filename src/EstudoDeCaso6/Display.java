@@ -1,5 +1,5 @@
 package EstudoDeCaso6;
 
-public class Display {
-
+interface Display {
+    void update(WeatherData data);
 }
