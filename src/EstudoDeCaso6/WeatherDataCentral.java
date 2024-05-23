@@ -1,3 +1,6 @@
+/*
+ * @author João Paulo
+ */
 package EstudoDeCaso6;
 
 import javax.swing.JButton;
