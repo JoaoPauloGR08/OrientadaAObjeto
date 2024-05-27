@@ -1,3 +1,9 @@
+/*
+ * @author João Paulo
+ * @version 1.0
+ * A classe PastConditionsDisplay é uma representação visual das condições meteorológicas passadas.
+ * Ela exibe as condições meteorológicas dos últimos dias em uma interface gráfica.
+ */
 package EstudoDeCaso6;
 
 import java.awt.Font;
@@ -8,9 +14,15 @@ import javax.swing.border.EmptyBorder;
 import java.util.ArrayList;
 import java.util.List;
 
+@SuppressWarnings("serial")
 class PastConditionsDisplay extends JPanel implements Display {
     private List<JLabel> labels = new ArrayList<>();
 
+    /**
+     * Construtor da classe PastConditionsDisplay.
+     * Cria e configura os elementos visuais para exibição das condições meteorológicas passadas.
+     * @param numDias o número de dias passados a serem exibidos
+     */
     public PastConditionsDisplay(int numDias) {
         setLayout(new GridLayout(numDias, 1));
         setBorder(new EmptyBorder(10, 10, 10, 10));
@@ -22,6 +34,10 @@ class PastConditionsDisplay extends JPanel implements Display {
         }
     }
 
+    /**
+     * Atualiza os dados exibidos com base nos novos dados meteorológicos passados recebidos.
+     * @param data os novos dados meteorológicos passados a serem exibidos
+     */
     @Override
     public void update(WeatherData data) {
         for (int i = labels.size() - 1; i > 0; i--) {

@@ -1,3 +1,9 @@
+/*
+ * @author João Paulo
+ * @version 1.0
+ * A classe CurrentConditionsDisplay é uma representação visual das condições meteorológicas atuais.
+ * Ela exibe a temperatura, umidade, pressão e data em uma interface gráfica.
+ */
 package EstudoDeCaso6;
 
 import java.awt.Font;
@@ -6,12 +12,17 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+@SuppressWarnings("serial")
 class CurrentConditionsDisplay extends JPanel implements Display {
     private JLabel temperaturaLabel;
     private JLabel umidadeLabel;
     private JLabel pressaoLabel;
     private JLabel dataLabel;
 
+    /**
+     * Construtor da classe CurrentConditionsDisplay.
+     * Configura a disposição e o estilo dos elementos visuais.
+     */
     public CurrentConditionsDisplay() {
         setLayout(new GridLayout(4, 1));
         setBorder(new EmptyBorder(10, 10, 10, 10));
@@ -29,6 +40,10 @@ class CurrentConditionsDisplay extends JPanel implements Display {
         add(dataLabel);
     }
 
+    /**
+     * Atualiza os dados exibidos com base nos novos dados meteorológicos recebidos.
+     * @param data os novos dados meteorológicos a serem exibidos
+     */
     @Override
     public void update(WeatherData data) {
         temperaturaLabel.setText("Temperatura: " + String.format("%.1f", data.getTemperatura()) + "°C");
